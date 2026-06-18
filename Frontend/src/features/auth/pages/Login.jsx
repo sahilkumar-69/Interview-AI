@@ -13,10 +13,13 @@ const Login = () => {
 
   const { handleLogin, loading } = useAuth();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    handleLogin(formData.email, formData.password);
-    navigate("/");
+    const result = await handleLogin(formData.email, formData.password);
+    // console.log(result);
+    if (result) {
+      navigate("/");
+    }
   };
 
   return (

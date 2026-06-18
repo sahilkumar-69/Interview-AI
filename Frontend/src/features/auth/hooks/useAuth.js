@@ -14,10 +14,13 @@ export function useAuth() {
     setLoading(true);
     try {
       const userData = await login(email, password);
+      console.log(userData);
       setUser(userData);
+      return true;
     } catch (error) {
       console.error("Login failed:", error);
-      throw error;
+      return false;
+      // throw error;
     } finally {
       setLoading(false);
     }
@@ -31,7 +34,8 @@ export function useAuth() {
       return true;
     } catch (error) {
       console.error("Registration failed:", error);
-      throw error;
+      return false;
+      // throw error;
     } finally {
       setLoading(false);
     }
@@ -50,11 +54,25 @@ export function useAuth() {
     }
   };
 
+  const fetchCurrentUser = async () => {
+    setLoading(true);
+    try {
+      const userData = await getCurrentUser();
+      setUser(userData);
+    } catch (error) {
+      console.error("Failed to fetch current user:", error);
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return {
     user,
     loading,
     handleLogin,
     handleRegister,
     handleLogout,
+    fetchCurrentUser,
   };
 }

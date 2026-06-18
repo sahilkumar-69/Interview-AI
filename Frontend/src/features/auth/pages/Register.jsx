@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
@@ -9,19 +9,18 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
   const { handleRegister, loading } = useAuth();
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const result = handleRegister(
+    const result = await handleRegister(
       formData.username,
       formData.email,
       formData.password,
     );
-    if (result) {
-      // Registration successful, redirect to login page
-      window.location.href = "/login";
-    }
+    if (result) navigate("/");
   };
 
   if (loading) {
