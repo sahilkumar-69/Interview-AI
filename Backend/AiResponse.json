@@ -1,0 +1,16 @@
+{
+  "technical_questions": [
+    1.1
+  ],
+  "behavioral_questions": [
+    "question_1_text",
+    "potential_answer_1_text",
+    "interviewer_intention_1_text"
+  ],
+  "skill_gaps": [
+    "skill_1_name",
+    "severity_1",
+    "justification_1_text"
+  ],
+  "overall_match_score": 0
+}
