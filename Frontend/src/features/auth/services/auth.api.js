@@ -13,6 +13,7 @@ export async function login(email, password) {
     });
     return response.data;
   } catch (error) {
+    console.log(error);
     throw error.response ? error.response.data : new Error("Network error");
   }
 }
