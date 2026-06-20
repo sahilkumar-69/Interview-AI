@@ -91,11 +91,11 @@ const interviewSchema = new Schema(
       type: Number,
       min: 0,
       max: 100,
-    //   required: true,
+      //   required: true,
     },
     selfDescription: {
       type: String,
-    },  
+    },
 
     technicalQuestions: [technicalQuestionSchema],
 
@@ -104,6 +104,11 @@ const interviewSchema = new Schema(
     skillGaps: [skillGapSchema],
 
     preparationPlan: [preparationPlanSchema],
+
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,
